@@ -62,9 +62,9 @@ int main(int argc, char** argv)
 	for(y=0; y<imageSize; y+=elemSize){
 		
 
-		*(outimg+y+0) == *(inimg+y+0);
-		*(outimg+y+1) == *(inimg+y+1);
-		*(outimg+y+2) == *(inimg+y+2);
+		*(outimg+y+0) = *(inimg+y+0);
+		*(outimg+y+1) = *(inimg+y+1);
+		*(outimg+y+2) = *(inimg+y+2);
 
     }
      
