@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     BITMAPINFOHEADER bmpInfoHeader;     /* BMP IMAGE INFO */
     RGBQUAD *palrgb;
     ubyte *inimg, *outimg;
-    int x = 0, y, z, imageSize;
+    int x, y, z, imageSize;
 
     if(argc != 3) {
         fprintf(stderr, "usage : %s input.bmp output.bmp \n", argv[0]);
@@ -49,24 +49,22 @@ int main(int argc, char** argv)
     
     fclose(fp);
     
-   // for(y = 0; y < bmpInfoHeader.biHeight; y++) {
-   //     for(x = 0; x < size; x+=elemSize) {
+    for(y = 0; y < bmpInfoHeader.biHeight; y++) {
+        for(x = 0; x < size; x+=elemSize) {
 
-     //       outimg[x+y*size+0] = inimg[x+y*size+0];
-     //       outimg[x+y*size+1] = inimg[x+y*size+1];
-     //       outimg[x+y*size+2] = inimg[x+y*size+2];
-     //   }
-  //  }
-
-
-	for(y=0; y<imageSize; y+=elemSize){
-		
-
-		outimg[y+0] = inimg[y+0];
-		outimg[y+1] = inimg[y+1];
-		outimg[y+2] = inimg[y+2];
-
+            outimg[x+y*size+0] = inimg[x+y*size+0];
+            outimg[x+y*size+1] = inimg[x+y*size+1];
+            outimg[x+y*size+2] = inimg[x+y*size+2];
+        }
     }
+
+   // for(y=0; y<bmpInfoHeader.biHeight;y++){
+	//	for(x= 0; x < size; x+=elemSize){
+			
+	//		outimg[x+y
+
+	//	}
+  //  }
      
     /***** write bmp *****/ 
     if((fp=fopen(argv[2], "wb"))==NULL) { 
